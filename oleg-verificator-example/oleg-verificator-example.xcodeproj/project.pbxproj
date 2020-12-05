@@ -1,0 +1,622 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2117CE4E257B9318009B5A43 /* oleg-verificator-sdk in Frameworks */ = {isa = PBXBuildFile; productRef = 2117CE4D257B9318009B5A43 /* oleg-verificator-sdk */; };
+		214ACB1D257B8D090065B7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB1C257B8D090065B7AF /* AppDelegate.swift */; };
+		214ACB1F257B8D090065B7AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB1E257B8D090065B7AF /* SceneDelegate.swift */; };
+		214ACB21257B8D090065B7AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB20257B8D090065B7AF /* ViewController.swift */; };
+		214ACB24257B8D090065B7AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214ACB22257B8D090065B7AF /* Main.storyboard */; };
+		214ACB26257B8D090065B7AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214ACB25257B8D090065B7AF /* Assets.xcassets */; };
+		214ACB29257B8D090065B7AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214ACB27257B8D090065B7AF /* LaunchScreen.storyboard */; };
+		214ACB34257B8D0A0065B7AF /* oleg_verificator_exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB33257B8D0A0065B7AF /* oleg_verificator_exampleTests.swift */; };
+		214ACB3F257B8D0A0065B7AF /* oleg_verificator_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB3E257B8D0A0065B7AF /* oleg_verificator_exampleUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		214ACB30257B8D0A0065B7AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 214ACB11257B8D090065B7AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 214ACB18257B8D090065B7AF;
+			remoteInfo = "oleg-verificator-example";
+		};
+		214ACB3B257B8D0A0065B7AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 214ACB11257B8D090065B7AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 214ACB18257B8D090065B7AF;
+			remoteInfo = "oleg-verificator-example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2117CE5E257B95E3009B5A43 /* oleg-verificator-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "oleg-verificator-sdk"; path = "../oleg-verificator-sdk"; sourceTree = "<group>"; };
+		214ACB19257B8D090065B7AF /* oleg-verificator-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oleg-verificator-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		214ACB1C257B8D090065B7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		214ACB1E257B8D090065B7AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		214ACB20257B8D090065B7AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		214ACB23257B8D090065B7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		214ACB25257B8D090065B7AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		214ACB28257B8D090065B7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		214ACB2A257B8D090065B7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		214ACB2F257B8D0A0065B7AF /* oleg-verificator-exampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "oleg-verificator-exampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		214ACB33257B8D0A0065B7AF /* oleg_verificator_exampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oleg_verificator_exampleTests.swift; sourceTree = "<group>"; };
+		214ACB35257B8D0A0065B7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		214ACB3A257B8D0A0065B7AF /* oleg-verificator-exampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "oleg-verificator-exampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		214ACB3E257B8D0A0065B7AF /* oleg_verificator_exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oleg_verificator_exampleUITests.swift; sourceTree = "<group>"; };
+		214ACB40257B8D0A0065B7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		214ACB16257B8D090065B7AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2117CE4E257B9318009B5A43 /* oleg-verificator-sdk in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		214ACB2C257B8D0A0065B7AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		214ACB37257B8D0A0065B7AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2117CE4C257B9318009B5A43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2117CE5E257B95E3009B5A43 /* oleg-verificator-sdk */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		214ACB10257B8D090065B7AF = {
+			isa = PBXGroup;
+			children = (
+				214ACB1B257B8D090065B7AF /* oleg-verificator-example */,
+				214ACB32257B8D0A0065B7AF /* oleg-verificator-exampleTests */,
+				214ACB3D257B8D0A0065B7AF /* oleg-verificator-exampleUITests */,
+				214ACB1A257B8D090065B7AF /* Products */,
+				2117CE4C257B9318009B5A43 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		214ACB1A257B8D090065B7AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				214ACB19257B8D090065B7AF /* oleg-verificator-example.app */,
+				214ACB2F257B8D0A0065B7AF /* oleg-verificator-exampleTests.xctest */,
+				214ACB3A257B8D0A0065B7AF /* oleg-verificator-exampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		214ACB1B257B8D090065B7AF /* oleg-verificator-example */ = {
+			isa = PBXGroup;
+			children = (
+				214ACB1C257B8D090065B7AF /* AppDelegate.swift */,
+				214ACB1E257B8D090065B7AF /* SceneDelegate.swift */,
+				214ACB20257B8D090065B7AF /* ViewController.swift */,
+				214ACB22257B8D090065B7AF /* Main.storyboard */,
+				214ACB25257B8D090065B7AF /* Assets.xcassets */,
+				214ACB27257B8D090065B7AF /* LaunchScreen.storyboard */,
+				214ACB2A257B8D090065B7AF /* Info.plist */,
+			);
+			path = "oleg-verificator-example";
+			sourceTree = "<group>";
+		};
+		214ACB32257B8D0A0065B7AF /* oleg-verificator-exampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				214ACB33257B8D0A0065B7AF /* oleg_verificator_exampleTests.swift */,
+				214ACB35257B8D0A0065B7AF /* Info.plist */,
+			);
+			path = "oleg-verificator-exampleTests";
+			sourceTree = "<group>";
+		};
+		214ACB3D257B8D0A0065B7AF /* oleg-verificator-exampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				214ACB3E257B8D0A0065B7AF /* oleg_verificator_exampleUITests.swift */,
+				214ACB40257B8D0A0065B7AF /* Info.plist */,
+			);
+			path = "oleg-verificator-exampleUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		214ACB18257B8D090065B7AF /* oleg-verificator-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 214ACB43257B8D0A0065B7AF /* Build configuration list for PBXNativeTarget "oleg-verificator-example" */;
+			buildPhases = (
+				214ACB15257B8D090065B7AF /* Sources */,
+				214ACB16257B8D090065B7AF /* Frameworks */,
+				214ACB17257B8D090065B7AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "oleg-verificator-example";
+			packageProductDependencies = (
+				2117CE4D257B9318009B5A43 /* oleg-verificator-sdk */,
+			);
+			productName = "oleg-verificator-example";
+			productReference = 214ACB19257B8D090065B7AF /* oleg-verificator-example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		214ACB2E257B8D0A0065B7AF /* oleg-verificator-exampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 214ACB46257B8D0A0065B7AF /* Build configuration list for PBXNativeTarget "oleg-verificator-exampleTests" */;
+			buildPhases = (
+				214ACB2B257B8D0A0065B7AF /* Sources */,
+				214ACB2C257B8D0A0065B7AF /* Frameworks */,
+				214ACB2D257B8D0A0065B7AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				214ACB31257B8D0A0065B7AF /* PBXTargetDependency */,
+			);
+			name = "oleg-verificator-exampleTests";
+			productName = "oleg-verificator-exampleTests";
+			productReference = 214ACB2F257B8D0A0065B7AF /* oleg-verificator-exampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		214ACB39257B8D0A0065B7AF /* oleg-verificator-exampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 214ACB49257B8D0A0065B7AF /* Build configuration list for PBXNativeTarget "oleg-verificator-exampleUITests" */;
+			buildPhases = (
+				214ACB36257B8D0A0065B7AF /* Sources */,
+				214ACB37257B8D0A0065B7AF /* Frameworks */,
+				214ACB38257B8D0A0065B7AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				214ACB3C257B8D0A0065B7AF /* PBXTargetDependency */,
+			);
+			name = "oleg-verificator-exampleUITests";
+			productName = "oleg-verificator-exampleUITests";
+			productReference = 214ACB3A257B8D0A0065B7AF /* oleg-verificator-exampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		214ACB11257B8D090065B7AF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					214ACB18257B8D090065B7AF = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					214ACB2E257B8D0A0065B7AF = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 214ACB18257B8D090065B7AF;
+					};
+					214ACB39257B8D0A0065B7AF = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 214ACB18257B8D090065B7AF;
+					};
+				};
+			};
+			buildConfigurationList = 214ACB14257B8D090065B7AF /* Build configuration list for PBXProject "oleg-verificator-example" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 214ACB10257B8D090065B7AF;
+			productRefGroup = 214ACB1A257B8D090065B7AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				214ACB18257B8D090065B7AF /* oleg-verificator-example */,
+				214ACB2E257B8D0A0065B7AF /* oleg-verificator-exampleTests */,
+				214ACB39257B8D0A0065B7AF /* oleg-verificator-exampleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		214ACB17257B8D090065B7AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				214ACB29257B8D090065B7AF /* LaunchScreen.storyboard in Resources */,
+				214ACB26257B8D090065B7AF /* Assets.xcassets in Resources */,
+				214ACB24257B8D090065B7AF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		214ACB2D257B8D0A0065B7AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		214ACB38257B8D0A0065B7AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		214ACB15257B8D090065B7AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				214ACB21257B8D090065B7AF /* ViewController.swift in Sources */,
+				214ACB1D257B8D090065B7AF /* AppDelegate.swift in Sources */,
+				214ACB1F257B8D090065B7AF /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		214ACB2B257B8D0A0065B7AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				214ACB34257B8D0A0065B7AF /* oleg_verificator_exampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		214ACB36257B8D0A0065B7AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				214ACB3F257B8D0A0065B7AF /* oleg_verificator_exampleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		214ACB31257B8D0A0065B7AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 214ACB18257B8D090065B7AF /* oleg-verificator-example */;
+			targetProxy = 214ACB30257B8D0A0065B7AF /* PBXContainerItemProxy */;
+		};
+		214ACB3C257B8D0A0065B7AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 214ACB18257B8D090065B7AF /* oleg-verificator-example */;
+			targetProxy = 214ACB3B257B8D0A0065B7AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		214ACB22257B8D090065B7AF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				214ACB23257B8D090065B7AF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		214ACB27257B8D090065B7AF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				214ACB28257B8D090065B7AF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		214ACB41257B8D0A0065B7AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		214ACB42257B8D0A0065B7AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		214ACB44257B8D0A0065B7AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M75J8SFFJ4;
+				INFOPLIST_FILE = "oleg-verificator-example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.voitenko.oleg-verificator-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		214ACB45257B8D0A0065B7AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M75J8SFFJ4;
+				INFOPLIST_FILE = "oleg-verificator-example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.voitenko.oleg-verificator-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		214ACB47257B8D0A0065B7AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M75J8SFFJ4;
+				INFOPLIST_FILE = "oleg-verificator-exampleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.voitenko.oleg-verificator-exampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/oleg-verificator-example.app/oleg-verificator-example";
+			};
+			name = Debug;
+		};
+		214ACB48257B8D0A0065B7AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M75J8SFFJ4;
+				INFOPLIST_FILE = "oleg-verificator-exampleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.voitenko.oleg-verificator-exampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/oleg-verificator-example.app/oleg-verificator-example";
+			};
+			name = Release;
+		};
+		214ACB4A257B8D0A0065B7AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M75J8SFFJ4;
+				INFOPLIST_FILE = "oleg-verificator-exampleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.voitenko.oleg-verificator-exampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "oleg-verificator-example";
+			};
+			name = Debug;
+		};
+		214ACB4B257B8D0A0065B7AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M75J8SFFJ4;
+				INFOPLIST_FILE = "oleg-verificator-exampleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.voitenko.oleg-verificator-exampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "oleg-verificator-example";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		214ACB14257B8D090065B7AF /* Build configuration list for PBXProject "oleg-verificator-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				214ACB41257B8D0A0065B7AF /* Debug */,
+				214ACB42257B8D0A0065B7AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		214ACB43257B8D0A0065B7AF /* Build configuration list for PBXNativeTarget "oleg-verificator-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				214ACB44257B8D0A0065B7AF /* Debug */,
+				214ACB45257B8D0A0065B7AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		214ACB46257B8D0A0065B7AF /* Build configuration list for PBXNativeTarget "oleg-verificator-exampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				214ACB47257B8D0A0065B7AF /* Debug */,
+				214ACB48257B8D0A0065B7AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		214ACB49257B8D0A0065B7AF /* Build configuration list for PBXNativeTarget "oleg-verificator-exampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				214ACB4A257B8D0A0065B7AF /* Debug */,
+				214ACB4B257B8D0A0065B7AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2117CE4D257B9318009B5A43 /* oleg-verificator-sdk */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "oleg-verificator-sdk";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 214ACB11257B8D090065B7AF /* Project object */;
+}
