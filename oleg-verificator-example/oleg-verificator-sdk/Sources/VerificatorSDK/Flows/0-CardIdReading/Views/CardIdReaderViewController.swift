@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 internal class CardIdReaderViewController: UIViewController {
     
@@ -42,6 +43,18 @@ internal class CardIdReaderViewController: UIViewController {
         mainView.buttonTakePhoto.addTarget(self, action: #selector(buttonTakePhotoTap(_:)), for: .touchUpInside)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        initiateSession()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        suspendSession()
+        
+        super.viewWillDisappear(animated)
+    }
+
     @objc private func dismissTap(_ sender: UIBarButtonItem) {
         viewModel.cancel()
     }
@@ -52,5 +65,63 @@ internal class CardIdReaderViewController: UIViewController {
     
     @objc private func buttonTakePhotoTap(_ sender: UIButton) {
         viewModel.takePhoto()
+    }
+    
+    private let captureSession = AVCaptureSession()
+    private let photoOutput = AVCapturePhotoOutput()
+    
+    private func initiateSession() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            setupCaptureSession()
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] granted in
+                guard granted else {
+                    self?.viewModel.reportError(.noCameraAccess)
+                    return
+                }
+                self?.setupCaptureSession()
+            })
+        default:
+            viewModel.reportError(.noCameraAccess)
+        }
+    }
+    
+    private func setupCaptureSession() {
+        captureSession.beginConfiguration()
+        
+        guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video) else {
+            viewModel.reportError(.noCameraDevice)
+            return
+        }
+        
+        do {
+            let input = try AVCaptureDeviceInput(device: backCamera)
+            if captureSession.canAddInput(input) && captureSession.canAddOutput(photoOutput) {
+                captureSession.addInput(input)
+                captureSession.sessionPreset = .photo
+                captureSession.addOutput(photoOutput)
+                captureSession.commitConfiguration()
+                setupLivePreview()
+            } else {
+                viewModel.reportError(.noCameraDevice)
+            }
+        } catch let error  {
+            viewModel.reportError(.system(message: error.localizedDescription))
+        }
+    }
+    
+    private func setupLivePreview() {
+        mainView.cameraView.session = captureSession
+        mainView.cameraView.videoPreviewLayer.videoGravity = .resizeAspectFill
+        mainView.cameraView.videoPreviewLayer.connection?.videoOrientation = .portrait
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.captureSession.startRunning()
+        }
+    }
+    
+    private func suspendSession() {
+        captureSession.stopRunning()
     }
 }

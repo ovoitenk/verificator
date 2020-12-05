@@ -22,7 +22,7 @@ class CardIdReaderView: UIView {
     private lazy var bottomStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [labelDescription, buttonsView])
         stack.axis = .vertical
-        stack.spacing = 8
+        stack.spacing = 16
         return stack
     }()
     
@@ -36,7 +36,7 @@ class CardIdReaderView: UIView {
     
     private lazy var buttonsView: UIView = {
         let view = UIView()
-        view.layout([Constraint(.height).constant(80)])
+        view.layout([Constraint(.height).constant(72)])
         
         view.addSubview(buttonTakePhoto)
         buttonTakePhoto.layout([
@@ -57,10 +57,10 @@ class CardIdReaderView: UIView {
         return view
     }()
     
-    let cameraView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
+    let cameraView: CameraPreviewView = {
+        let view = CameraPreviewView()
         view.layer.cornerRadius = 16.0
+        view.layer.masksToBounds = true
         return view
     }()
     
@@ -87,7 +87,7 @@ class CardIdReaderView: UIView {
         bottomStack.layout([
             Constraint(.leading).constant(16),
             Constraint(.trailing).constant(16),
-            Constraint(.bottom).to(safeAreaLayoutGuide)
+            Constraint(.bottom).to(safeAreaLayoutGuide).constant(16)
         ])
         
         addSubview(cameraView)

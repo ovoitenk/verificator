@@ -15,6 +15,7 @@ internal class CommonNavigationController: UINavigationController {
         navigationBar.tintColor = ColorStyle.tintLight
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorStyle.white]
+        navigationBar.shadowImage = UIImage()
     }
     
     required init?(coder aDecoder: NSCoder) {

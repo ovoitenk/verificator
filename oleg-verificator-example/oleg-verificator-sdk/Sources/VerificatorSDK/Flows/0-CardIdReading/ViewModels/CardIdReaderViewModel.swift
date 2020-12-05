@@ -7,6 +7,23 @@
 
 import Foundation
 
+enum CardIdReaderError: LocalizedError {
+    case noCameraAccess
+    case noCameraDevice
+    case system(message: String)
+    
+    var errorDescription: String? {
+        switch self {
+        case .noCameraAccess:
+            return "Verificator doesn't have access to the camera. Please change privacy settings."
+        case .noCameraDevice:
+            return "Verificator is having troubles with detecting your camera. Please make sure it is installed."
+        case .system(message: let message):
+            return message
+        }
+    }
+}
+
 protocol CardIdReaderViewModelType {
     var title: String { get }
     var description: String { get }
@@ -14,6 +31,7 @@ protocol CardIdReaderViewModelType {
     func takePhoto()
     func flipCamera()
     func cancel()
+    func reportError(_ error: CardIdReaderError)
 }
 
 class CardIdReaderViewModel: CardIdReaderViewModelType {
@@ -36,5 +54,9 @@ class CardIdReaderViewModel: CardIdReaderViewModelType {
     
     func cancel() {
         
+    }
+    
+    func reportError(_ error: CardIdReaderError) {
+        print("error: \(error.localizedDescription)")
     }
 }
