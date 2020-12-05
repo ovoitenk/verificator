@@ -3,7 +3,7 @@ import UIKit
 public class Verificator {
     
     public static func startCardIdReading() {
-        guard let root = UIApplication.shared.keyWindow?.rootViewController else { return }
+        guard let root = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.rootViewController else { return }
         let controller = CardIdReaderViewController()
         let navigation = CommonNavigationController(rootViewController: controller)
         navigation.modalPresentationStyle = .fullScreen

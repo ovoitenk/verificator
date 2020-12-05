@@ -13,6 +13,8 @@ internal class CommonNavigationController: UINavigationController {
         super.init(rootViewController: rootViewController)
         navigationBar.barTintColor = ColorStyle.dark
         navigationBar.tintColor = ColorStyle.tintLight
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorStyle.white]
     }
     
     required init?(coder aDecoder: NSCoder) {
