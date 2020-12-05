@@ -1,7 +1,7 @@
 import XCTest
-@testable import oleg_verificator_sdk
+@testable import VerificatorSDK
 
-final class oleg_verificator_sdkTests: XCTestCase {
+final class VerificatorSdkTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct

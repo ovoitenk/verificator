@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2117CE4E257B9318009B5A43 /* oleg-verificator-sdk in Frameworks */ = {isa = PBXBuildFile; productRef = 2117CE4D257B9318009B5A43 /* oleg-verificator-sdk */; };
+		213C4AB5257BA065001C2D82 /* VerificatorSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 213C4AB4257BA065001C2D82 /* VerificatorSDK */; };
 		214ACB1D257B8D090065B7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB1C257B8D090065B7AF /* AppDelegate.swift */; };
 		214ACB1F257B8D090065B7AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB1E257B8D090065B7AF /* SceneDelegate.swift */; };
 		214ACB21257B8D090065B7AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB20257B8D090065B7AF /* ViewController.swift */; };
@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2117CE5E257B95E3009B5A43 /* oleg-verificator-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "oleg-verificator-sdk"; path = "../oleg-verificator-sdk"; sourceTree = "<group>"; };
+		213C4AB0257BA05D001C2D82 /* oleg-verificator-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "oleg-verificator-sdk"; path = "../oleg-verificator-sdk"; sourceTree = "<group>"; };
 		214ACB19257B8D090065B7AF /* oleg-verificator-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oleg-verificator-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		214ACB1C257B8D090065B7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		214ACB1E257B8D090065B7AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2117CE4E257B9318009B5A43 /* oleg-verificator-sdk in Frameworks */,
+				213C4AB5257BA065001C2D82 /* VerificatorSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 		2117CE4C257B9318009B5A43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2117CE5E257B95E3009B5A43 /* oleg-verificator-sdk */,
+				213C4AB0257BA05D001C2D82 /* oleg-verificator-sdk */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -157,7 +157,7 @@
 			);
 			name = "oleg-verificator-example";
 			packageProductDependencies = (
-				2117CE4D257B9318009B5A43 /* oleg-verificator-sdk */,
+				213C4AB4257BA065001C2D82 /* VerificatorSDK */,
 			);
 			productName = "oleg-verificator-example";
 			productReference = 214ACB19257B8D090065B7AF /* oleg-verificator-example.app */;
@@ -612,9 +612,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2117CE4D257B9318009B5A43 /* oleg-verificator-sdk */ = {
+		213C4AB4257BA065001C2D82 /* VerificatorSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "oleg-verificator-sdk";
+			productName = VerificatorSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

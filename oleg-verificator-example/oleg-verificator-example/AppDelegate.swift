@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import oleg_verificator_sdk
+import VerificatorSDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
