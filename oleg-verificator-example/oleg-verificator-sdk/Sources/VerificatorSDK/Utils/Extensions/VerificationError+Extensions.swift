@@ -17,7 +17,7 @@ extension VerificatorError {
         }
     }
     
-    init(error: CardIdReaderError) {
+    init(error: PhotoCaptureError) {
         switch error {
         case .noCameraAccess, .noCameraDevice:
             self = .cameraUnavailable

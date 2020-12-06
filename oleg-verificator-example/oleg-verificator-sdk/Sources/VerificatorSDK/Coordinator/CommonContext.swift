@@ -8,11 +8,13 @@
 import Foundation
 
 class CommonContext: TextRecognitionServiceMakerContext {
-    init() {
+    let configuration: VerificatorConfiguration
+    init(configuration: VerificatorConfiguration) {
+        self.configuration = configuration
     }
     
     func makeTextRecognitionService() -> ImageProcessingServiceType {
-        return ImageProcessingService()
+        return TextRecognitionService(minConfidence: configuration.textRecognitionMinConfidence)
     }
 }
 

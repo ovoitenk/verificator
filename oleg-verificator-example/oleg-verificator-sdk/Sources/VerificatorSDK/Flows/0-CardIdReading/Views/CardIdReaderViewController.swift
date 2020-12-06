@@ -11,8 +11,8 @@ import AVFoundation
 
 internal class CardIdReaderViewController: UIViewController {
     
-    private var viewModel: CardIdReaderViewModelType
-    init(viewModel: CardIdReaderViewModelType) {
+    private var viewModel: PhotoCaptureViewModelType
+    init(viewModel: PhotoCaptureViewModelType) {
         self.viewModel = viewModel
         self.mainView = CardIdReaderView(tintColor: viewModel.tintColor)
         super.init(nibName: nil, bundle: nil)
@@ -139,8 +139,8 @@ internal class CardIdReaderViewController: UIViewController {
     }
 }
 
-extension CardIdReaderViewController: CardIdReaderViewType {
-    func update(state: CardIdReaderState) {
+extension CardIdReaderViewController: PhotoCaptureViewType {
+    func update(state: PhotoCaptureState) {
         switch state {
         case .session(cameraType: let cameraType):
             mainView.buttonTakePhoto.isEnabled = true
@@ -180,10 +180,8 @@ extension CardIdReaderViewController: AVCapturePhotoCaptureDelegate {
                 self?.viewModel.reportError(.system(message: e.localizedDescription))
                 return
             }
-            print("raw photo taken")
             guard let imageData = photo.fileDataRepresentation(), let image = UIImage(data: imageData) else { return }
             self?.viewModel.processPhoto(image: image)
-            print("processing started")
         }
     }
 }

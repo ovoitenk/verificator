@@ -32,17 +32,26 @@ class Coordinator: CoordinatorType {
     
     private let context: CommonContext
     private let mode: Mode
-    private let configuration: VerificatorConfiguration
-    init(context: CommonContext, mode: Mode, configuration: VerificatorConfiguration) {
+    private var configuration: VerificatorConfiguration { return context.configuration }
+    init(context: CommonContext, mode: Mode) {
         self.context = context
         self.mode = mode
-        self.configuration = configuration
     }
     
     func navigate(to: CoordinatorEntry, animated: Bool) {
         switch to {
         case .capturePhoto:
-            let viewModel = CardIdReaderViewModel(coordinator: self, configuration: configuration)
+            let configuration: PhotoCaptureConfiguration
+            switch mode {
+            case .cardId:
+                configuration = createCardIdConfiguration()
+            case .selfie:
+                configuration = createSelfieConfiguration()
+            }
+            let viewModel = PhotoCaptureViewModel(
+                coordinator: self,
+                configuration: configuration
+            )
             let controller = CardIdReaderViewController(viewModel: viewModel)
             if let navigation = presentedNavigation {
                 navigation.setViewControllers([controller], animated: animated)
@@ -100,5 +109,25 @@ class Coordinator: CoordinatorType {
         case .selfie(callback: let callback):
             callback(.error(error))
         }
+    }
+    
+    private func createCardIdConfiguration() -> PhotoCaptureConfiguration {
+        return PhotoCaptureConfiguration(
+            title: "Card ID",
+            description: "Make sure your ID is clear and readable.",
+            defaultCamera: .back,
+            tintColor: configuration.tintColor,
+            errorHandlingMode: configuration.errorHandlingMode
+        )
+    }
+    
+    private func createSelfieConfiguration() -> PhotoCaptureConfiguration {
+        return PhotoCaptureConfiguration(
+            title: "Selfie",
+            description: "Make sure your face is completely inside the frame.",
+            defaultCamera: .front,
+            tintColor: configuration.tintColor,
+            errorHandlingMode: configuration.errorHandlingMode
+        )
     }
 }

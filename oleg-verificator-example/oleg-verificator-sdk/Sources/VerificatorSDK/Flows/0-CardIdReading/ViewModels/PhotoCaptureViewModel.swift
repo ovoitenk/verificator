@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum CardIdReaderError: LocalizedError {
+enum PhotoCaptureError: LocalizedError {
     case noCameraAccess
     case noCameraDevice
     case system(message: String)
@@ -25,18 +25,18 @@ enum CardIdReaderError: LocalizedError {
     }
 }
 
-enum CardIdReaderState {
+enum PhotoCaptureState {
     case idle
-    case session(cameraType: CardIdReaderCameraType)
+    case session(cameraType: PhotoCaptureCameraType)
     case failure(message: String)
     case photoCapturing
 }
 
-enum CardIdReaderCameraType {
+enum PhotoCaptureCameraType {
     case back
     case front
     
-    var inverted: CardIdReaderCameraType {
+    var inverted: PhotoCaptureCameraType {
         switch self {
         case .back: return .front
         case .front: return .back
@@ -44,15 +44,15 @@ enum CardIdReaderCameraType {
     }
 }
 
-protocol CardIdReaderViewType: AnyObject {
-    func update(state: CardIdReaderState)
+protocol PhotoCaptureViewType: AnyObject {
+    func update(state: PhotoCaptureState)
 }
 
-protocol CardIdReaderViewModelType {
+protocol PhotoCaptureViewModelType {
     var title: String { get }
     var description: String { get }
-    var view: CardIdReaderViewType? { get set }
-    var state: CardIdReaderState { get }
+    var view: PhotoCaptureViewType? { get set }
+    var state: PhotoCaptureState { get }
     var tintColor: UIColor { get }
     
     func startSession()
@@ -61,22 +61,22 @@ protocol CardIdReaderViewModelType {
     func flipCamera()
     func cancel()
     func processPhoto(image: UIImage)
-    func reportError(_ error: CardIdReaderError)
+    func reportError(_ error: PhotoCaptureError)
 }
 
-class CardIdReaderViewModel: CardIdReaderViewModelType {
+class PhotoCaptureViewModel: PhotoCaptureViewModelType {
     var title: String {
-        return "Card ID"
+        return configuration.title
     }
     
     var description: String {
-        return "Make sure your ID is clear and readable."
+        return configuration.description
     }
     
-    weak var view: CardIdReaderViewType?
-    private var cameraType: CardIdReaderCameraType = .back
+    weak var view: PhotoCaptureViewType?
+    private var cameraType: PhotoCaptureCameraType
     
-    private (set) var state: CardIdReaderState = .idle {
+    private (set) var state: PhotoCaptureState = .idle {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let s = self else { return }
@@ -88,10 +88,11 @@ class CardIdReaderViewModel: CardIdReaderViewModelType {
     var tintColor: UIColor { configuration.tintColor }
     
     private let coordinator: CoordinatorType
-    private let configuration: VerificatorConfiguration
-    init(coordinator: CoordinatorType, configuration: VerificatorConfiguration) {
+    private let configuration: PhotoCaptureConfiguration
+    init(coordinator: CoordinatorType, configuration: PhotoCaptureConfiguration) {
         self.coordinator = coordinator
         self.configuration = configuration
+        self.cameraType = configuration.defaultCamera
     }
     
     func startSession() {
@@ -115,7 +116,7 @@ class CardIdReaderViewModel: CardIdReaderViewModelType {
         coordinator.navigate(to: .dismissal, animated: true)
     }
     
-    func reportError(_ error: CardIdReaderError) {
+    func reportError(_ error: PhotoCaptureError) {
         switch configuration.errorHandlingMode {
         case .automatic:
             state = .failure(message: error.localizedDescription)

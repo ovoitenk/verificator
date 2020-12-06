@@ -26,7 +26,7 @@ class MenuViewModel: MenuViewModelType {
     init() {
         self.menuItems = [
             MenuItemViewModel(item: .scanId, text: "SCAN ID CARD"),
-            MenuItemViewModel(item: .scanId, text: "TAKE SELFIE")
+            MenuItemViewModel(item: .selfie, text: "TAKE SELFIE")
         ]
     }
     
@@ -61,7 +61,19 @@ class MenuViewModel: MenuViewModelType {
     }
     
     func makeSelfie() {
-    
+        Verificator.startSelfieTaking { [weak self] (result) in
+            switch result {
+            case .done(let response):
+                break
+//                self?.view?.showTexts(viewModel: TextsViewModel(texts: response))
+            case .cancelled:
+                break
+            case .error:
+                // using Verificator with default automatic error hanling mode
+                // errors are handed by the SDK itself
+                break
+            }
+        }
     }
 }
 

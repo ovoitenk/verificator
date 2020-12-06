@@ -57,7 +57,7 @@ class ImageProcessingViewModel: ImageProcessingViewModelType {
     
     func process() {
         state = .loading
-        service.process(image: image, minConfidence: 0.6) { [weak self] (result) in
+        service.process(image: image) { [weak self] (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(texts: let texts):
