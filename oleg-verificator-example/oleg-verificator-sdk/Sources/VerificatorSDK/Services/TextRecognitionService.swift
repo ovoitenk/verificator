@@ -26,6 +26,11 @@ enum TextRecognitionError: LocalizedError {
     }
 }
 
+struct TextRecognitionResultEntry {
+    let text: String
+    let confidence: Float
+}
+
 /**
  Service to detect texts from ID card
  */
@@ -52,21 +57,17 @@ class TextRecognitionService: ImageProcessingServiceType {
                 orientation: self?.orientation(from: uiImage.imageOrientation) ?? .down
             )
             
-            let request = VNRecognizeTextRequest { (request, error) in
+            let request = VNRecognizeTextRequest(completionHandler: { (request, error) in
                 guard let observations = request.results as? [VNRecognizedTextObservation] else {
                     completion(.failure(error: ImageProcessingError.noData))
                     return
                 }
-                let recognizedStrings = observations
+                let recognitionEntries = observations
                     .compactMap({ $0.topCandidates(1).first })
-                    .filter({ $0.confidence >= s.minConfidence })
-                    .map({ $0.string })
-                guard !recognizedStrings.isEmpty else {
-                    completion(.failure(error: ImageProcessingError.noData))
-                    return
-                }
-                completion(.success(response: recognizedStrings))
-            }
+                    .map({ TextRecognitionResultEntry(text: $0.string, confidence: $0.confidence) })
+                    
+                completion(s.imageProcessingResult(from: recognitionEntries))
+            })
 
             do {
                 try requestHandler.perform([request])
@@ -75,6 +76,14 @@ class TextRecognitionService: ImageProcessingServiceType {
             }
 
         }
+    }
+    
+    func imageProcessingResult(from: [TextRecognitionResultEntry]) -> ImageProcessingResult<Response, ImageProcessingError> {
+        let recognizedStrings = from.filter({ $0.confidence >= minConfidence }).map({ $0.text })
+        guard !recognizedStrings.isEmpty else {
+            return .failure(error: ImageProcessingError.noData)
+        }
+        return .success(response: recognizedStrings)
     }
     
     private func orientation(from: UIImage.Orientation) -> CGImagePropertyOrientation {

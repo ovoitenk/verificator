@@ -31,19 +31,19 @@ enum ImageProcessingState {
 class ImageProcessingViewModel<T: ImageProcessingServiceType>: ImageProcessingViewModelType {
     let image: Data
     let service: T
-    let coordinator: Coordinator
+    let coordinator: CoordinatorType
     let configuration: VerificatorConfiguration
     weak var view: ImageProcessingViewType?
     var successCallback: ((T.Response) -> Void)?
     var failureCallback: ((T.ImageProcessingError) -> Void)?
-    init(image: Data, service: T, coordinator: Coordinator, configuration: VerificatorConfiguration) {
+    init(image: Data, service: T, coordinator: CoordinatorType, configuration: VerificatorConfiguration) {
         self.image = image
         self.service = service
         self.coordinator = coordinator
         self.configuration = configuration
     }
     
-    private var state: ImageProcessingState = .idle {
+    private (set) var state: ImageProcessingState = .idle {
         didSet {
             view?.update(state: state)
         }

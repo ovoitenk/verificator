@@ -74,7 +74,7 @@ class PhotoCaptureViewModel: PhotoCaptureViewModelType {
     }
     
     weak var view: PhotoCaptureViewType?
-    private var cameraType: PhotoCaptureCameraType
+    private (set) var cameraType: PhotoCaptureCameraType
     
     private (set) var state: PhotoCaptureState = .idle {
         didSet {
