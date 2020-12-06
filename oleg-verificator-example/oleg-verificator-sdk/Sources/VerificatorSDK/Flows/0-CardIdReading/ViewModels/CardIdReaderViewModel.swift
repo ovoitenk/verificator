@@ -53,6 +53,7 @@ protocol CardIdReaderViewModelType {
     var description: String { get }
     var view: CardIdReaderViewType? { get set }
     var state: CardIdReaderState { get }
+    var tintColor: UIColor { get }
     
     func startSession()
     func endSession()
@@ -84,9 +85,13 @@ class CardIdReaderViewModel: CardIdReaderViewModelType {
         }
     }
     
+    var tintColor: UIColor { configuration.tintColor }
+    
     private let coordinator: CoordinatorType
-    init(coordinator: CoordinatorType) {
+    private let configuration: VerificatorConfiguration
+    init(coordinator: CoordinatorType, configuration: VerificatorConfiguration) {
         self.coordinator = coordinator
+        self.configuration = configuration
     }
     
     func startSession() {
@@ -111,7 +116,15 @@ class CardIdReaderViewModel: CardIdReaderViewModelType {
     }
     
     func reportError(_ error: CardIdReaderError) {
-        state = .failure(message: error.localizedDescription)
+        switch configuration.errorHandlingMode {
+        case .automatic:
+            state = .failure(message: error.localizedDescription)
+        case .manual:
+            coordinator.navigate(
+                to: .failure(error: VerificatorError(error: error)),
+                animated: true
+            )
+        }
     }
     
     func processPhoto(image: UIImage) {

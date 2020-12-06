@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 internal class CommonNavigationController: UINavigationController {
-    override init(rootViewController: UIViewController) {
+    init(rootViewController: UIViewController, tintColor: UIColor) {
         super.init(rootViewController: rootViewController)
         navigationBar.barTintColor = ColorStyle.dark
-        navigationBar.tintColor = ColorStyle.tint
+        navigationBar.tintColor = tintColor
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorStyle.white]
         navigationBar.shadowImage = UIImage()

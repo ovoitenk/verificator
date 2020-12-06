@@ -14,6 +14,7 @@ internal class CardIdReaderViewController: UIViewController {
     private var viewModel: CardIdReaderViewModelType
     init(viewModel: CardIdReaderViewModelType) {
         self.viewModel = viewModel
+        self.mainView = CardIdReaderView(tintColor: viewModel.tintColor)
         super.init(nibName: nil, bundle: nil)
         self.viewModel.view = self
     }
@@ -22,7 +23,7 @@ internal class CardIdReaderViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let mainView = CardIdReaderView()
+    private let mainView: CardIdReaderView
     
     override func loadView() {
         view = mainView
@@ -179,8 +180,10 @@ extension CardIdReaderViewController: AVCapturePhotoCaptureDelegate {
                 self?.viewModel.reportError(.system(message: e.localizedDescription))
                 return
             }
+            print("raw photo taken")
             guard let imageData = photo.fileDataRepresentation(), let image = UIImage(data: imageData) else { return }
             self?.viewModel.processPhoto(image: image)
+            print("processing started")
         }
     }
 }

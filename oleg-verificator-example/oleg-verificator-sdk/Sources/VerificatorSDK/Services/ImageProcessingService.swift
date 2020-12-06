@@ -12,6 +12,7 @@ import Vision
 enum ImageProcessingError: LocalizedError {
     case noCgImage
     case noData
+    case system(message: String)
     
     var errorDescription: String? {
         switch self {
@@ -19,13 +20,15 @@ enum ImageProcessingError: LocalizedError {
             return "There is a problem with the image format."
         case .noData:
             return "No texts were found on the photo. Please try again."
+        case .system(message: let m):
+            return m
         }
     }
 }
 
 enum ImageProcessingResult {
     case success(texts: [String])
-    case failure(error: Error)
+    case failure(error: ImageProcessingError)
 }
 
 protocol ImageProcessingServiceType {
@@ -35,38 +38,40 @@ protocol ImageProcessingServiceType {
 class ImageProcessingService: ImageProcessingServiceType {
     
     func process(image: UIImage, minConfidence: Float, completion: @escaping (ImageProcessingResult) -> Void) {
-        guard let cgImage = image.cgImage else {
-            completion(.failure(error: ImageProcessingError.noCgImage))
-            return
-        }
-        
-        let requestHandler = VNImageRequestHandler(
-            cgImage: cgImage,
-            orientation: orientation(from: image.imageOrientation)
-        )
-        
-        let request = VNRecognizeTextRequest { (request, error) in
-            guard let observations = request.results as? [VNRecognizedTextObservation] else {
-                completion(.failure(error: ImageProcessingError.noData))
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let cgImage = image.cgImage else {
+                completion(.failure(error: ImageProcessingError.noCgImage))
                 return
             }
-            let recognizedStrings = observations
-                .compactMap({ $0.topCandidates(1).first })
-                .filter({ $0.confidence >= minConfidence })
-                .map({ $0.string })
-            guard !recognizedStrings.isEmpty else {
-                completion(.failure(error: ImageProcessingError.noData))
-                return
+            
+            let requestHandler = VNImageRequestHandler(
+                cgImage: cgImage,
+                orientation: self?.orientation(from: image.imageOrientation) ?? .down
+            )
+            
+            let request = VNRecognizeTextRequest { (request, error) in
+                guard let observations = request.results as? [VNRecognizedTextObservation] else {
+                    completion(.failure(error: ImageProcessingError.noData))
+                    return
+                }
+                let recognizedStrings = observations
+                    .compactMap({ $0.topCandidates(1).first })
+                    .filter({ $0.confidence >= minConfidence })
+                    .map({ $0.string })
+                guard !recognizedStrings.isEmpty else {
+                    completion(.failure(error: ImageProcessingError.noData))
+                    return
+                }
+                completion(.success(texts: recognizedStrings))
             }
-            completion(.success(texts: recognizedStrings))
-        }
 
-        do {
-            try requestHandler.perform([request])
-        } catch {
-            completion(.failure(error: error))
-        }
+            do {
+                try requestHandler.perform([request])
+            } catch {
+                completion(.failure(error: .system(message: error.localizedDescription)))
+            }
 
+        }
     }
     
     private func orientation(from: UIImage.Orientation) -> CGImagePropertyOrientation {

@@ -46,7 +46,9 @@ class ViewController: UIViewController {
     }
 
     @objc private func buttonPresentTap(_ sender: UIButton) {
-        Verificator.startCardIdReading()
+        Verificator.startCardIdReading { (result) in
+            let t = ""
+        }
     }
 }
 

@@ -10,9 +10,10 @@ import UIKit
 
 class CardIdReaderView: UIView {
     
-    init() {
+    init(tintColor: UIColor) {
         super.init(frame: .zero)
         setup()
+        [buttonTakePhoto, buttonFlipCamera].forEach({ $0.tintColor = tintColor })
     }
     
     required init?(coder: NSCoder) {
@@ -75,14 +76,12 @@ class CardIdReaderView: UIView {
     let buttonTakePhoto: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "take_photo", in: .module, with: nil), for: .normal)
-        button.tintColor = ColorStyle.tint
         return button
     }()
     
     let buttonFlipCamera: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "flip_photo", in: .module, with: nil), for: .normal)
-        button.tintColor = ColorStyle.tint
         button.layout([
             Constraint.init(.width).constant(44),
             Constraint.init(.height).constant(44)

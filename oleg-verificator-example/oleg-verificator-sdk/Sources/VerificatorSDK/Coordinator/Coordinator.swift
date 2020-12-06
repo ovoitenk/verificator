@@ -16,6 +16,8 @@ enum CoordinatorEntry {
     case capturePhoto
     case textRecognition(image: UIImage)
     case dismissal
+    case completion(texts: [String])
+    case failure(error: VerificatorError)
 }
 
 protocol CoordinatorType: AnyObject {
@@ -23,20 +25,29 @@ protocol CoordinatorType: AnyObject {
 }
 
 class Coordinator: CoordinatorType {
+    enum Mode {
+        case cardId(callback: ((VerificatorStatus<[String]>) -> Void))
+        case selfie(callback: ((VerificatorStatus<Bool>) -> Void))
+    }
+    
     private let context: CommonContext
-    init(context: CommonContext) {
+    private let mode: Mode
+    private let configuration: VerificatorConfiguration
+    init(context: CommonContext, mode: Mode, configuration: VerificatorConfiguration) {
         self.context = context
+        self.mode = mode
+        self.configuration = configuration
     }
     
     func navigate(to: CoordinatorEntry, animated: Bool) {
         switch to {
         case .capturePhoto:
-            let viewModel = CardIdReaderViewModel(coordinator: self)
+            let viewModel = CardIdReaderViewModel(coordinator: self, configuration: configuration)
             let controller = CardIdReaderViewController(viewModel: viewModel)
             if let navigation = presentedNavigation {
                 navigation.setViewControllers([controller], animated: animated)
             } else {
-                let navigation = CommonNavigationController(rootViewController: controller)
+                let navigation = CommonNavigationController(rootViewController: controller, tintColor: configuration.tintColor)
                 navigation.modalPresentationStyle = .fullScreen
                 root?.present(navigation, animated: animated, completion: nil)
                 presentedNavigation = navigation
@@ -45,12 +56,25 @@ class Coordinator: CoordinatorType {
             let viewModel = ImageProcessingViewModel(
                 image: image,
                 service: context.makeTextRecognitionService(),
-                coordinator: self
+                coordinator: self,
+                configuration: configuration
             )
             let controller = ImageProcessingViewController(viewModel: viewModel)
             presentedNavigation?.setViewControllers([controller], animated: animated)
         case .dismissal:
             presentedNavigation?.dismiss(animated: true, completion: nil)
+            callbcakCancellation()
+        case .completion(texts: let texts):
+            switch mode {
+            case .cardId(callback: let callback):
+                presentedNavigation?.dismiss(animated: true, completion: nil)
+                callback(.done(texts))
+            case .selfie:
+                print("Expected callback doesn't match the received response.")
+            }
+        case .failure(error: let error):
+            presentedNavigation?.dismiss(animated: true, completion: nil)
+            callbcakError(error: error)
         }
     }
     
@@ -58,5 +82,23 @@ class Coordinator: CoordinatorType {
     
     var root: UIViewController? {
         return UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.rootViewController
+    }
+    
+    private func callbcakCancellation() {
+        switch mode {
+        case .cardId(callback: let callback):
+            callback(.cancelled)
+        case .selfie(callback: let callback):
+            callback(.cancelled)
+        }
+    }
+    
+    private func callbcakError(error: VerificatorError) {
+        switch mode {
+        case .cardId(callback: let callback):
+            callback(.error(error))
+        case .selfie(callback: let callback):
+            callback(.error(error))
+        }
     }
 }
