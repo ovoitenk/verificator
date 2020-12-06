@@ -24,6 +24,9 @@ enum SelfieDetectionError: LocalizedError {
     }
 }
 
+/**
+ Service to detect unique face from photo
+ */
 class SelfieDetectionService: ImageProcessingServiceType {
     typealias Response = Double
     typealias ImageProcessingError = SelfieDetectionError

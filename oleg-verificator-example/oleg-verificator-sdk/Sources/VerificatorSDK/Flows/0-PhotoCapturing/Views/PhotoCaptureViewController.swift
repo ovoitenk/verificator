@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 import AVFoundation
 
-internal class CardIdReaderViewController: UIViewController {
+internal class PhotoCaptureViewController: UIViewController {
     
     private var viewModel: PhotoCaptureViewModelType
     init(viewModel: PhotoCaptureViewModelType) {
         self.viewModel = viewModel
-        self.mainView = CardIdReaderView(tintColor: viewModel.tintColor)
+        self.mainView = PhotoCaptureView(tintColor: viewModel.tintColor)
         super.init(nibName: nil, bundle: nil)
         self.viewModel.view = self
     }
@@ -23,7 +23,7 @@ internal class CardIdReaderViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let mainView: CardIdReaderView
+    private let mainView: PhotoCaptureView
     
     override func loadView() {
         view = mainView
@@ -139,7 +139,7 @@ internal class CardIdReaderViewController: UIViewController {
     }
 }
 
-extension CardIdReaderViewController: PhotoCaptureViewType {
+extension PhotoCaptureViewController: PhotoCaptureViewType {
     func update(state: PhotoCaptureState) {
         switch state {
         case .session(cameraType: let cameraType):
@@ -173,7 +173,7 @@ extension CardIdReaderViewController: PhotoCaptureViewType {
     }
 }
 
-extension CardIdReaderViewController: AVCapturePhotoCaptureDelegate {
+extension PhotoCaptureViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             if let e = error {

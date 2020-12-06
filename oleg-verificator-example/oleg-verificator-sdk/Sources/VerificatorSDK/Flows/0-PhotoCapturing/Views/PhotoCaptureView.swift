@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CardIdReaderView: UIView {
+class PhotoCaptureView: UIView {
     
     init(tintColor: UIColor) {
         super.init(frame: .zero)

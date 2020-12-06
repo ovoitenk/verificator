@@ -26,6 +26,9 @@ enum TextRecognitionError: LocalizedError {
     }
 }
 
+/**
+ Service to detect texts from ID card
+ */
 class TextRecognitionService: ImageProcessingServiceType {
     typealias Response = [String]
     typealias ImageProcessingError = TextRecognitionError

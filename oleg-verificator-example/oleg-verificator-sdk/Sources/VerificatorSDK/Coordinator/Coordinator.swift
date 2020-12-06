@@ -53,7 +53,7 @@ class Coordinator: CoordinatorType {
                 coordinator: self,
                 configuration: configuration
             )
-            let controller = CardIdReaderViewController(viewModel: viewModel)
+            let controller = PhotoCaptureViewController(viewModel: viewModel)
             if let navigation = presentedNavigation {
                 navigation.setViewControllers([controller], animated: animated)
             } else {
