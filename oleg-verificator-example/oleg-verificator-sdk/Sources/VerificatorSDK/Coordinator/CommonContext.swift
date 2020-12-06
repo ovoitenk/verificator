@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CommonContext: TextRecognitionServiceMakerContext {
+class CommonContext {
     let configuration: VerificatorConfiguration
     init(configuration: VerificatorConfiguration) {
         self.configuration = configuration
@@ -16,8 +16,8 @@ class CommonContext: TextRecognitionServiceMakerContext {
     func makeTextRecognitionService() -> ImageProcessingServiceType {
         return TextRecognitionService(minConfidence: configuration.textRecognitionMinConfidence)
     }
-}
-
-protocol TextRecognitionServiceMakerContext {
-    func makeTextRecognitionService() -> ImageProcessingServiceType
+    
+    func makeSelfieDetectionService() -> ImageProcessingServiceType {
+        return SelfieDetectionService()
+    }
 }

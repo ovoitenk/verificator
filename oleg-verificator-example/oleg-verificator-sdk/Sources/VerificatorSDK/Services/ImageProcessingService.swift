@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 enum ImageProcessingError: LocalizedError {
     case noCgImage
@@ -31,5 +30,5 @@ enum ImageProcessingResult {
 }
 
 protocol ImageProcessingServiceType {
-    func process(image: UIImage, completion: @escaping (ImageProcessingResult) -> Void)
+    func process(image: Data, completion: @escaping (ImageProcessingResult) -> Void)
 }

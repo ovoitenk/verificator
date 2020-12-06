@@ -29,12 +29,12 @@ enum ImageProcessingState {
 }
 
 class ImageProcessingViewModel: ImageProcessingViewModelType {
-    let image: UIImage
+    let image: Data
     let service: ImageProcessingServiceType
     let coordinator: Coordinator
     let configuration: VerificatorConfiguration
     weak var view: ImageProcessingViewType?
-    init(image: UIImage, service: ImageProcessingServiceType, coordinator: Coordinator, configuration: VerificatorConfiguration) {
+    init(image: Data, service: ImageProcessingServiceType, coordinator: Coordinator, configuration: VerificatorConfiguration) {
         self.image = image
         self.service = service
         self.coordinator = coordinator

@@ -180,8 +180,8 @@ extension CardIdReaderViewController: AVCapturePhotoCaptureDelegate {
                 self?.viewModel.reportError(.system(message: e.localizedDescription))
                 return
             }
-            guard let imageData = photo.fileDataRepresentation(), let image = UIImage(data: imageData) else { return }
-            self?.viewModel.processPhoto(image: image)
+            guard let imageData = photo.fileDataRepresentation() else { return }
+            self?.viewModel.processPhoto(image: imageData)
         }
     }
 }

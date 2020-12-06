@@ -14,7 +14,7 @@ protocol CoordinatorContext {
 
 enum CoordinatorEntry {
     case capturePhoto
-    case textRecognition(image: UIImage)
+    case textRecognition(image: Data)
     case dismissal
     case completion(texts: [String])
     case failure(error: VerificatorError)
@@ -62,9 +62,16 @@ class Coordinator: CoordinatorType {
                 presentedNavigation = navigation
             }
         case .textRecognition(image: let image):
+            let imageProcessingService: ImageProcessingServiceType
+            switch mode {
+            case .cardId:
+                imageProcessingService = context.makeTextRecognitionService()
+            case .selfie:
+                imageProcessingService = context.makeSelfieDetectionService()
+            }
             let viewModel = ImageProcessingViewModel(
                 image: image,
-                service: context.makeTextRecognitionService(),
+                service: imageProcessingService,
                 coordinator: self,
                 configuration: configuration
             )

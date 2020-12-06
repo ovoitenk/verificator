@@ -60,7 +60,7 @@ protocol PhotoCaptureViewModelType {
     func takePhoto()
     func flipCamera()
     func cancel()
-    func processPhoto(image: UIImage)
+    func processPhoto(image: Data)
     func reportError(_ error: PhotoCaptureError)
 }
 
@@ -128,7 +128,7 @@ class PhotoCaptureViewModel: PhotoCaptureViewModelType {
         }
     }
     
-    func processPhoto(image: UIImage) {
+    func processPhoto(image: Data) {
         DispatchQueue.main.async { [weak self] in
             self?.coordinator.navigate(to: .textRecognition(image: image), animated: true)
         }

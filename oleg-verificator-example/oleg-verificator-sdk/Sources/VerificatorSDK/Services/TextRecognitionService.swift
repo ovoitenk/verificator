@@ -16,17 +16,17 @@ class TextRecognitionService: ImageProcessingServiceType {
         self.minConfidence = minConfidence
     }
     
-    func process(image: UIImage, completion: @escaping (ImageProcessingResult) -> Void) {
+    func process(image: Data, completion: @escaping (ImageProcessingResult) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let s = self else { return }
-            guard let cgImage = image.cgImage else {
+            guard let uiImage = UIImage(data: image), let cgImage = uiImage.cgImage else {
                 completion(.failure(error: ImageProcessingError.noCgImage))
                 return
             }
             
             let requestHandler = VNImageRequestHandler(
                 cgImage: cgImage,
-                orientation: self?.orientation(from: image.imageOrientation) ?? .down
+                orientation: self?.orientation(from: uiImage.imageOrientation) ?? .down
             )
             
             let request = VNRecognizeTextRequest { (request, error) in
