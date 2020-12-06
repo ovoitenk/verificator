@@ -16,7 +16,8 @@ enum CoordinatorEntry {
     case capturePhoto
     case textRecognition(image: Data)
     case dismissal
-    case completion(texts: [String])
+    case completionTexts(texts: [String])
+    case completionSelfie(confidence: Double)
     case failure(error: VerificatorError)
 }
 
@@ -27,7 +28,7 @@ protocol CoordinatorType: AnyObject {
 class Coordinator: CoordinatorType {
     enum Mode {
         case cardId(callback: ((VerificatorStatus<[String]>) -> Void))
-        case selfie(callback: ((VerificatorStatus<Bool>) -> Void))
+        case selfie(callback: ((VerificatorStatus<Double>) -> Void))
     }
     
     private let context: CommonContext
@@ -62,31 +63,26 @@ class Coordinator: CoordinatorType {
                 presentedNavigation = navigation
             }
         case .textRecognition(image: let image):
-            let imageProcessingService: ImageProcessingServiceType
-            switch mode {
-            case .cardId:
-                imageProcessingService = context.makeTextRecognitionService()
-            case .selfie:
-                imageProcessingService = context.makeSelfieDetectionService()
-            }
-            let viewModel = ImageProcessingViewModel(
-                image: image,
-                service: imageProcessingService,
-                coordinator: self,
-                configuration: configuration
-            )
-            let controller = ImageProcessingViewController(viewModel: viewModel)
+            let controller = createImageProcessingController(image: image)
             presentedNavigation?.setViewControllers([controller], animated: animated)
         case .dismissal:
             presentedNavigation?.dismiss(animated: true, completion: nil)
             callbcakCancellation()
-        case .completion(texts: let texts):
+        case .completionTexts(texts: let texts):
             switch mode {
             case .cardId(callback: let callback):
                 presentedNavigation?.dismiss(animated: true, completion: nil)
                 callback(.done(texts))
             case .selfie:
                 print("Expected callback doesn't match the received response.")
+            }
+        case .completionSelfie(confidence: let confidence):
+            switch mode {
+            case .cardId:
+                print("Expected callback doesn't match the received response.")
+            case .selfie(callback: let callback):
+                presentedNavigation?.dismiss(animated: true, completion: nil)
+                callback(.done(confidence))
             }
         case .failure(error: let error):
             presentedNavigation?.dismiss(animated: true, completion: nil)
@@ -136,5 +132,38 @@ class Coordinator: CoordinatorType {
             tintColor: configuration.tintColor,
             errorHandlingMode: configuration.errorHandlingMode
         )
+    }
+    
+    private func createImageProcessingController(image: Data) -> ImageProcessingViewController {
+        switch mode {
+        case .cardId:
+            let vm = ImageProcessingViewModel(
+                image: image,
+                service: context.makeTextRecognitionService(),
+                coordinator: self,
+                configuration: configuration
+            )
+            vm.successCallback = { [weak self] (texts) in
+                self?.navigate(to: .completionTexts(texts: texts), animated: true)
+            }
+            vm.failureCallback = { [weak self] (error) in
+                self?.navigate(to: .failure(error: VerificatorError(error: error)), animated: true)
+            }
+            return ImageProcessingViewController(viewModel: vm)
+        case .selfie:
+            let vm = ImageProcessingViewModel(
+                image: image,
+                service: context.makeSelfieDetectionService(),
+                coordinator: self,
+                configuration: configuration
+            )
+            vm.successCallback = { [weak self] (confidence) in
+                self?.navigate(to: .completionSelfie(confidence: confidence), animated: true)
+            }
+            vm.failureCallback = { [weak self] (error) in
+                self?.navigate(to: .failure(error: VerificatorError(error: error)), animated: true)
+            }
+            return ImageProcessingViewController(viewModel: vm)
+        }
     }
 }

@@ -15,7 +15,7 @@ public class Verificator {
         ).navigate(to: .capturePhoto, animated: true)
     }
     
-    public static func startSelfieTaking(callback: @escaping (VerificatorStatus<Bool>) -> Void) {
+    public static func startSelfieTaking(callback: @escaping (VerificatorStatus<Double>) -> Void) {
         Coordinator(
             context: createCommonContext(),
             mode: .selfie(callback: callback)
@@ -29,7 +29,7 @@ public class Verificator {
     private static func createDefaultConfiguration() -> VerificatorConfiguration {
         return VerificatorConfiguration(
             tintColor: ColorStyle.tint,
-            errorHandlingMode: .manual
+            errorHandlingMode: .automatic
         )
     }
 }
@@ -43,7 +43,14 @@ public enum VerificatorStatus<T> {
 public enum VerificatorError: Error {
     case cameraUnavailable
     case localError
+    case networkError
+    case faceRecognitionError(type: VerificatorFacesRecognitionErrorType)
     case unknown
+}
+
+public enum VerificatorFacesRecognitionErrorType {
+    case noFace
+    case faceIsNotUnique
 }
 
 public struct VerificatorConfiguration {
@@ -51,7 +58,7 @@ public struct VerificatorConfiguration {
     let errorHandlingMode: VeritificatorErrorHandlingMode
     
     // non overridable configuration property
-    let textRecognitionMinConfidence: Float = 0.6
+    let minConfidence: Float = 0.6
     
     init(tintColor: UIColor, errorHandlingMode: VeritificatorErrorHandlingMode) {
         self.tintColor = tintColor

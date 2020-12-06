@@ -7,28 +7,35 @@
 
 import Foundation
 
-enum ImageProcessingError: LocalizedError {
-    case noCgImage
-    case noData
-    case system(message: String)
-    
-    var errorDescription: String? {
-        switch self {
-        case .noCgImage:
-            return "There is a problem with the image format."
-        case .noData:
-            return "No texts were found on the photo. Please try again."
-        case .system(message: let m):
-            return m
-        }
-    }
-}
-
-enum ImageProcessingResult {
-    case success(texts: [String])
-    case failure(error: ImageProcessingError)
+enum ImageProcessingResult<T, U: LocalizedError> {
+    case success(response: T)
+    case failure(error: U)
 }
 
 protocol ImageProcessingServiceType {
-    func process(image: Data, completion: @escaping (ImageProcessingResult) -> Void)
+    associatedtype Response
+    associatedtype ImageProcessingError: LocalizedError
+    func process(image: Data, completion: @escaping (ImageProcessingResult<Response, ImageProcessingError>) -> Void)
 }
+
+/*
+protocol TestingImageProcessingServiceType {
+    associatedtype Response
+    associatedtype TestingError: Error
+    func process(image: Data, completion: @escaping (TestingResult<Response, TestingError>) -> Void)
+}
+
+enum TestingResult<T, U: Error> {
+    case success(response: T)
+    case failure(error: U)
+}
+
+class TestClass: TestingImageProcessingServiceType {
+    typealias TestingError = ImageProcessingError
+    typealias Response = String
+    
+    func process(image: Data, completion: @escaping (TestingResult<Response, TestingError>) -> Void) {
+        
+    }
+}
+*/

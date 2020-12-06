@@ -12,6 +12,8 @@
 		213C4AF8257D4DDA001C2D82 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4AF7257D4DDA001C2D82 /* UIColor+Extensions.swift */; };
 		213C4B03257D4FF2001C2D82 /* TextsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4B02257D4FF2001C2D82 /* TextsViewController.swift */; };
 		213C4B08257D506D001C2D82 /* TextsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4B07257D506D001C2D82 /* TextsViewModel.swift */; };
+		213C4B13257D8D2F001C2D82 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4B12257D8D2F001C2D82 /* MessageViewController.swift */; };
+		213C4B1B257D8D41001C2D82 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4B1A257D8D41001C2D82 /* MessageViewModel.swift */; };
 		214ACB1D257B8D090065B7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB1C257B8D090065B7AF /* AppDelegate.swift */; };
 		214ACB1F257B8D090065B7AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB1E257B8D090065B7AF /* SceneDelegate.swift */; };
 		214ACB21257B8D090065B7AF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB20257B8D090065B7AF /* MenuViewController.swift */; };
@@ -45,6 +47,8 @@
 		213C4AF7257D4DDA001C2D82 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		213C4B02257D4FF2001C2D82 /* TextsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsViewController.swift; sourceTree = "<group>"; };
 		213C4B07257D506D001C2D82 /* TextsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsViewModel.swift; sourceTree = "<group>"; };
+		213C4B12257D8D2F001C2D82 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		213C4B1A257D8D41001C2D82 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		214ACB19257B8D090065B7AF /* oleg-verificator-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oleg-verificator-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		214ACB1C257B8D090065B7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		214ACB1E257B8D090065B7AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 			children = (
 				213C4AEC257D462D001C2D82 /* 0-Menu */,
 				213C4AED257D4638001C2D82 /* 1-Texts */,
+				213C4B11257D8D04001C2D82 /* 2-Message */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -148,6 +153,15 @@
 				213C4AF7257D4DDA001C2D82 /* UIColor+Extensions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		213C4B11257D8D04001C2D82 /* 2-Message */ = {
+			isa = PBXGroup;
+			children = (
+				213C4B12257D8D2F001C2D82 /* MessageViewController.swift */,
+				213C4B1A257D8D41001C2D82 /* MessageViewModel.swift */,
+			);
+			name = "2-Message";
 			sourceTree = "<group>";
 		};
 		214ACB10257B8D090065B7AF = {
@@ -334,7 +348,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				214ACB21257B8D090065B7AF /* MenuViewController.swift in Sources */,
+				213C4B1B257D8D41001C2D82 /* MessageViewModel.swift in Sources */,
 				213C4AF8257D4DDA001C2D82 /* UIColor+Extensions.swift in Sources */,
+				213C4B13257D8D2F001C2D82 /* MessageViewController.swift in Sources */,
 				214ACB1D257B8D090065B7AF /* AppDelegate.swift in Sources */,
 				213C4B08257D506D001C2D82 /* TextsViewModel.swift in Sources */,
 				213C4B03257D4FF2001C2D82 /* TextsViewController.swift in Sources */,

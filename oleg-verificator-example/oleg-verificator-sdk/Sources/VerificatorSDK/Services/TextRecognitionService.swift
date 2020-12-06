@@ -9,14 +9,34 @@ import Foundation
 import UIKit
 import Vision
 
+enum TextRecognitionError: LocalizedError {
+    case noCgImage
+    case noData
+    case system(message: String)
+    
+    var errorDescription: String? {
+        switch self {
+        case .noCgImage:
+            return "There is a problem with the image format."
+        case .noData:
+            return "No texts were found on the photo. Please try again."
+        case .system(message: let m):
+            return m
+        }
+    }
+}
+
 class TextRecognitionService: ImageProcessingServiceType {
+    typealias Response = [String]
+    typealias ImageProcessingError = TextRecognitionError
+    
     
     private let minConfidence: Float
     init(minConfidence: Float) {
         self.minConfidence = minConfidence
     }
     
-    func process(image: Data, completion: @escaping (ImageProcessingResult) -> Void) {
+    func process(image: Data, completion: @escaping (ImageProcessingResult<Response, ImageProcessingError>) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let s = self else { return }
             guard let uiImage = UIImage(data: image), let cgImage = uiImage.cgImage else {
@@ -42,7 +62,7 @@ class TextRecognitionService: ImageProcessingServiceType {
                     completion(.failure(error: ImageProcessingError.noData))
                     return
                 }
-                completion(.success(texts: recognizedStrings))
+                completion(.success(response: recognizedStrings))
             }
 
             do {

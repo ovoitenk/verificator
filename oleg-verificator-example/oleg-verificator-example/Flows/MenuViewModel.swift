@@ -11,6 +11,7 @@ import VerificatorSDK
 
 protocol MenuViewType: AnyObject {
     func showTexts(viewModel: TextsViewModelType)
+    func showSelfieResult(confidence: Double)
 }
 
 protocol MenuViewModelType {
@@ -64,8 +65,7 @@ class MenuViewModel: MenuViewModelType {
         Verificator.startSelfieTaking { [weak self] (result) in
             switch result {
             case .done(let response):
-                break
-//                self?.view?.showTexts(viewModel: TextsViewModel(texts: response))
+                self?.view?.showSelfieResult(confidence: response)
             case .cancelled:
                 break
             case .error:

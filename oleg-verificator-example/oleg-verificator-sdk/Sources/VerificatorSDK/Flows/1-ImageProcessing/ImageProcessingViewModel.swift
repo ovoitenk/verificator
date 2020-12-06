@@ -28,13 +28,15 @@ enum ImageProcessingState {
     case error(message: String, canRetry: Bool)
 }
 
-class ImageProcessingViewModel: ImageProcessingViewModelType {
+class ImageProcessingViewModel<T: ImageProcessingServiceType>: ImageProcessingViewModelType {
     let image: Data
-    let service: ImageProcessingServiceType
+    let service: T
     let coordinator: Coordinator
     let configuration: VerificatorConfiguration
     weak var view: ImageProcessingViewType?
-    init(image: Data, service: ImageProcessingServiceType, coordinator: Coordinator, configuration: VerificatorConfiguration) {
+    var successCallback: ((T.Response) -> Void)?
+    var failureCallback: ((T.ImageProcessingError) -> Void)?
+    init(image: Data, service: T, coordinator: Coordinator, configuration: VerificatorConfiguration) {
         self.image = image
         self.service = service
         self.coordinator = coordinator
@@ -60,18 +62,15 @@ class ImageProcessingViewModel: ImageProcessingViewModelType {
         service.process(image: image) { [weak self] (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .success(texts: let texts):
-                    self?.coordinator.navigate(to: .completion(texts: texts), animated: true)
+                case .success(response: let response):
+                    self?.successCallback?(response)
                 case .failure(error: let error):
                     guard let s = self else { return }
                     switch s.configuration.errorHandlingMode {
                     case .automatic:
                         self?.state = .error(message: error.localizedDescription, canRetry: true)
                     case .manual:
-                        self?.coordinator.navigate(
-                            to: .failure(error: VerificatorError(error: error)),
-                            animated: true
-                        )
+                        self?.failureCallback?(error)
                     }
                 }
             }

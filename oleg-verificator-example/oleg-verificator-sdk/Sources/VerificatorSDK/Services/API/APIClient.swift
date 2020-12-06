@@ -31,8 +31,10 @@ class APIClient {
     }
     
     private (set) var baseUrl: URL
-    init(baseUrl: URL) {
+    private let logs: Bool
+    init(baseUrl: URL, logs: Bool) {
         self.baseUrl = baseUrl
+        self.logs = logs
     }
     
     /**
@@ -146,6 +148,7 @@ extension APIClient {
     }
     
     private func log(requestBody: Data?, httpMethod: String?, url: URL?, headers: [String: String]?) {
+        guard logs else { return }
         let bodyString = String(data: requestBody ?? Data(), encoding: .utf8)
         print("""
             Request: \(httpMethod ?? "") \(url?.absoluteString ?? "")
@@ -155,6 +158,7 @@ extension APIClient {
     }
     
     private func log(response: URLResponse?, data: Data?, error: Error?) {
+        guard logs else { return }
         if let error = error {
             print("Response: \(error.localizedDescription)")
             return
@@ -164,6 +168,7 @@ extension APIClient {
     }
     
     private func log(url: URL?, responseBody: Data?, statusCode: Int) {
+        guard logs else { return }
         let bodyString = String(data: responseBody ?? Data(), encoding: .utf8) ?? String(data: responseBody ?? Data(), encoding: .ascii)
         print("""
             URL: \(String(describing: url?.absoluteString)) Response: \(statusCode)

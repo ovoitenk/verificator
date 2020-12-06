@@ -12,12 +12,12 @@ class CommonContext {
     init(configuration: VerificatorConfiguration) {
         self.configuration = configuration
     }
-    
-    func makeTextRecognitionService() -> ImageProcessingServiceType {
-        return TextRecognitionService(minConfidence: configuration.textRecognitionMinConfidence)
+
+    func makeTextRecognitionService() -> TextRecognitionService {
+        return TextRecognitionService(minConfidence: configuration.minConfidence)
     }
-    
-    func makeSelfieDetectionService() -> ImageProcessingServiceType {
-        return SelfieDetectionService()
+
+    func makeSelfieDetectionService() -> SelfieDetectionService {
+        return SelfieDetectionService(minConfidence: configuration.minConfidence)
     }
 }

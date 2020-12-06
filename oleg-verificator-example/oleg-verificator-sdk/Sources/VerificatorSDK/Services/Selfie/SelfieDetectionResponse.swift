@@ -16,5 +16,5 @@ struct SelfieDetectionResponse: Decodable {
 }
 
 struct SelfieDetectionFaceAnnotation: Decodable {
-    let detectionConfidence: Double?
+    let detectionConfidence: Float?
 }

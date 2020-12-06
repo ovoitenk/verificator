@@ -99,4 +99,14 @@ extension MenuViewController: MenuViewType {
         let controller = TextsViewController(viewModel: viewModel)
         navigationController?.pushViewController(controller, animated: true)
     }
+    
+    func showSelfieResult(confidence: Double) {
+        let nf = NumberFormatter()
+        nf.numberStyle = .percent
+        let confidenceString = nf.string(from: NSNumber(value: confidence)) ?? ""
+        let message = "Congrats! We are \(confidenceString)% sure about your face :)"
+        let viewModel = MessageViewModel(title: "Successful Face", message: message)
+        let controller = MessageViewController(viewModel: viewModel)
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
