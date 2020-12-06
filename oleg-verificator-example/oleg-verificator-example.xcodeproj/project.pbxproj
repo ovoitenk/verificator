@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		213C4AD1257BD334001C2D82 /* VerificatorSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 213C4AD0257BD334001C2D82 /* VerificatorSDK */; };
+		213C4AEF257D469C001C2D82 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4AEE257D469C001C2D82 /* MenuViewModel.swift */; };
+		213C4AF8257D4DDA001C2D82 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4AF7257D4DDA001C2D82 /* UIColor+Extensions.swift */; };
+		213C4B03257D4FF2001C2D82 /* TextsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4B02257D4FF2001C2D82 /* TextsViewController.swift */; };
+		213C4B08257D506D001C2D82 /* TextsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4B07257D506D001C2D82 /* TextsViewModel.swift */; };
 		214ACB1D257B8D090065B7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB1C257B8D090065B7AF /* AppDelegate.swift */; };
 		214ACB1F257B8D090065B7AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB1E257B8D090065B7AF /* SceneDelegate.swift */; };
-		214ACB21257B8D090065B7AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB20257B8D090065B7AF /* ViewController.swift */; };
+		214ACB21257B8D090065B7AF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB20257B8D090065B7AF /* MenuViewController.swift */; };
 		214ACB24257B8D090065B7AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214ACB22257B8D090065B7AF /* Main.storyboard */; };
 		214ACB26257B8D090065B7AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214ACB25257B8D090065B7AF /* Assets.xcassets */; };
 		214ACB29257B8D090065B7AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214ACB27257B8D090065B7AF /* LaunchScreen.storyboard */; };
@@ -37,10 +41,14 @@
 
 /* Begin PBXFileReference section */
 		213C4AB0257BA05D001C2D82 /* oleg-verificator-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "oleg-verificator-sdk"; sourceTree = "<group>"; };
+		213C4AEE257D469C001C2D82 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		213C4AF7257D4DDA001C2D82 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		213C4B02257D4FF2001C2D82 /* TextsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsViewController.swift; sourceTree = "<group>"; };
+		213C4B07257D506D001C2D82 /* TextsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsViewModel.swift; sourceTree = "<group>"; };
 		214ACB19257B8D090065B7AF /* oleg-verificator-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oleg-verificator-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		214ACB1C257B8D090065B7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		214ACB1E257B8D090065B7AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		214ACB20257B8D090065B7AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		214ACB20257B8D090065B7AF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		214ACB23257B8D090065B7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		214ACB25257B8D090065B7AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		214ACB28257B8D090065B7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,6 +95,61 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		213C4AE3257D454E001C2D82 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				214ACB22257B8D090065B7AF /* Main.storyboard */,
+				214ACB25257B8D090065B7AF /* Assets.xcassets */,
+				214ACB27257B8D090065B7AF /* LaunchScreen.storyboard */,
+				214ACB2A257B8D090065B7AF /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		213C4AE4257D455E001C2D82 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				214ACB1C257B8D090065B7AF /* AppDelegate.swift */,
+				214ACB1E257B8D090065B7AF /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		213C4AE5257D456C001C2D82 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				213C4AEC257D462D001C2D82 /* 0-Menu */,
+				213C4AED257D4638001C2D82 /* 1-Texts */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		213C4AEC257D462D001C2D82 /* 0-Menu */ = {
+			isa = PBXGroup;
+			children = (
+				214ACB20257B8D090065B7AF /* MenuViewController.swift */,
+				213C4AEE257D469C001C2D82 /* MenuViewModel.swift */,
+			);
+			name = "0-Menu";
+			sourceTree = "<group>";
+		};
+		213C4AED257D4638001C2D82 /* 1-Texts */ = {
+			isa = PBXGroup;
+			children = (
+				213C4B02257D4FF2001C2D82 /* TextsViewController.swift */,
+				213C4B07257D506D001C2D82 /* TextsViewModel.swift */,
+			);
+			name = "1-Texts";
+			sourceTree = "<group>";
+		};
+		213C4AF6257D4DCA001C2D82 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				213C4AF7257D4DDA001C2D82 /* UIColor+Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		214ACB10257B8D090065B7AF = {
 			isa = PBXGroup;
 			children = (
@@ -111,13 +174,10 @@
 		214ACB1B257B8D090065B7AF /* oleg-verificator-example */ = {
 			isa = PBXGroup;
 			children = (
-				214ACB1C257B8D090065B7AF /* AppDelegate.swift */,
-				214ACB1E257B8D090065B7AF /* SceneDelegate.swift */,
-				214ACB20257B8D090065B7AF /* ViewController.swift */,
-				214ACB22257B8D090065B7AF /* Main.storyboard */,
-				214ACB25257B8D090065B7AF /* Assets.xcassets */,
-				214ACB27257B8D090065B7AF /* LaunchScreen.storyboard */,
-				214ACB2A257B8D090065B7AF /* Info.plist */,
+				213C4AF6257D4DCA001C2D82 /* Utils */,
+				213C4AE5257D456C001C2D82 /* Flows */,
+				213C4AE4257D455E001C2D82 /* Application */,
+				213C4AE3257D454E001C2D82 /* Resources */,
 			);
 			path = "oleg-verificator-example";
 			sourceTree = "<group>";
@@ -273,9 +333,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				214ACB21257B8D090065B7AF /* ViewController.swift in Sources */,
+				214ACB21257B8D090065B7AF /* MenuViewController.swift in Sources */,
+				213C4AF8257D4DDA001C2D82 /* UIColor+Extensions.swift in Sources */,
 				214ACB1D257B8D090065B7AF /* AppDelegate.swift in Sources */,
+				213C4B08257D506D001C2D82 /* TextsViewModel.swift in Sources */,
+				213C4B03257D4FF2001C2D82 /* TextsViewController.swift in Sources */,
 				214ACB1F257B8D090065B7AF /* SceneDelegate.swift in Sources */,
+				213C4AEF257D469C001C2D82 /* MenuViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +518,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4KTE83XQQ9;
-				INFOPLIST_FILE = "oleg-verificator-example/Info.plist";
+				INFOPLIST_FILE = "oleg-verificator-example/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -476,7 +540,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4KTE83XQQ9;
-				INFOPLIST_FILE = "oleg-verificator-example/Info.plist";
+				INFOPLIST_FILE = "oleg-verificator-example/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
