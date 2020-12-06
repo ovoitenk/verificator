@@ -84,6 +84,11 @@ class CardIdReaderViewModel: CardIdReaderViewModelType {
         }
     }
     
+    private let coordinator: CoordinatorType
+    init(coordinator: CoordinatorType) {
+        self.coordinator = coordinator
+    }
+    
     func startSession() {
         state = .session(cameraType: cameraType)
     }
@@ -110,6 +115,8 @@ class CardIdReaderViewModel: CardIdReaderViewModelType {
     }
     
     func processPhoto(image: UIImage) {
-        // TODO 
+        DispatchQueue.main.async { [weak self] in
+            self?.coordinator.navigate(to: .textRecognition(image: image), animated: true)
+        }
     }
 }
