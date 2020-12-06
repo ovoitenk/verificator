@@ -30,10 +30,12 @@ enum ImageProcessingState {
 class ImageProcessingViewModel: ImageProcessingViewModelType {
     let image: UIImage
     let service: ImageProcessingServiceType
+    let coordinator: Coordinator
     weak var view: ImageProcessingViewType?
-    init(image: UIImage, service: ImageProcessingServiceType) {
+    init(image: UIImage, service: ImageProcessingServiceType, coordinator: Coordinator) {
         self.image = image
         self.service = service
+        self.coordinator = coordinator
     }
     
     private var state: ImageProcessingState = .idle {
@@ -51,18 +53,18 @@ class ImageProcessingViewModel: ImageProcessingViewModelType {
         service.process(image: image, minConfidence: 0.6) { [weak self] (result) in
             switch result {
             case .success(texts: let texts):
-                print("texts: \(texts)")
+                self?.coordinator.navigate(to: .dismissal, animated: true)
             case .failure(error: let error):
-                self?.view?.update(state: .error(message: error.localizedDescription, canRetry: true))
+                self?.state = .error(message: error.localizedDescription, canRetry: true)
             }
         }
     }
     
     func retry() {
-        // TODO
+        coordinator.navigate(to: .capturePhoto, animated: true)
     }
     
     func cancel() {
-        // TODO
+        coordinator.navigate(to: .dismissal, animated: true)
     }
 }

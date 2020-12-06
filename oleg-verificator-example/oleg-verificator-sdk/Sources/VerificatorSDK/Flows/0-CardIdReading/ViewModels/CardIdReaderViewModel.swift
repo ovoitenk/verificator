@@ -107,7 +107,7 @@ class CardIdReaderViewModel: CardIdReaderViewModelType {
     }
     
     func cancel() {
-        // TODO
+        coordinator.navigate(to: .dismissal, animated: true)
     }
     
     func reportError(_ error: CardIdReaderError) {

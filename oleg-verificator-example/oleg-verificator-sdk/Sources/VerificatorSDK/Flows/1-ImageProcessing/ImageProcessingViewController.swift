@@ -58,7 +58,7 @@ class ImageProcessingViewController: UIViewController {
     private lazy var buttonRetry: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(buttonRetryTap(_:)), for: .touchUpInside)
-        button.setTitleColor(ColorStyle.white, for: .normal)
+        button.setTitleColor(ColorStyle.tint, for: .normal)
         button.setTitle("Retry", for: .normal)
         return button
     }()

@@ -2,9 +2,12 @@ import UIKit
 
 public class Verificator {
     
-    private static let coordinator: CoordinatorType = Coordinator()
-    
     public static func startCardIdReading() {
-        coordinator.navigate(to: .capturePhoto, animated: true)
+        Coordinator(context: createCommonContext())
+            .navigate(to: .capturePhoto, animated: true)
+    }
+    
+    private static func createCommonContext() -> CommonContext {
+        return CommonContext()
     }
 }

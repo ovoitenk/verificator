@@ -11,11 +11,14 @@ import Vision
 
 enum ImageProcessingError: LocalizedError {
     case noCgImage
+    case noData
     
     var errorDescription: String? {
         switch self {
         case .noCgImage:
-        return "There is a problem with the image format."
+            return "There is a problem with the image format."
+        case .noData:
+            return "No texts were found on the photo. Please try again."
         }
     }
 }
@@ -44,12 +47,17 @@ class ImageProcessingService: ImageProcessingServiceType {
         
         let request = VNRecognizeTextRequest { (request, error) in
             guard let observations = request.results as? [VNRecognizedTextObservation] else {
+                completion(.failure(error: ImageProcessingError.noData))
                 return
             }
             let recognizedStrings = observations
                 .compactMap({ $0.topCandidates(1).first })
                 .filter({ $0.confidence >= minConfidence })
                 .map({ $0.string })
+            guard !recognizedStrings.isEmpty else {
+                completion(.failure(error: ImageProcessingError.noData))
+                return
+            }
             completion(.success(texts: recognizedStrings))
         }
 
