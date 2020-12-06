@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum CardIdReaderError: LocalizedError {
     case noCameraAccess
@@ -24,18 +25,45 @@ enum CardIdReaderError: LocalizedError {
     }
 }
 
+enum CardIdReaderState {
+    case idle
+    case session(cameraType: CardIdReaderCameraType)
+    case failure(message: String)
+    case photoCapturing
+}
+
+enum CardIdReaderCameraType {
+    case back
+    case front
+    
+    var inverted: CardIdReaderCameraType {
+        switch self {
+        case .back: return .front
+        case .front: return .back
+        }
+    }
+}
+
+protocol CardIdReaderViewType: AnyObject {
+    func update(state: CardIdReaderState)
+}
+
 protocol CardIdReaderViewModelType {
     var title: String { get }
     var description: String { get }
+    var view: CardIdReaderViewType? { get set }
+    var state: CardIdReaderState { get }
     
+    func startSession()
+    func endSession()
     func takePhoto()
     func flipCamera()
     func cancel()
+    func processPhoto(image: UIImage)
     func reportError(_ error: CardIdReaderError)
 }
 
 class CardIdReaderViewModel: CardIdReaderViewModelType {
-    
     var title: String {
         return "Card ID"
     }
@@ -44,19 +72,44 @@ class CardIdReaderViewModel: CardIdReaderViewModelType {
         return "Make sure your ID is clear and readable."
     }
     
+    weak var view: CardIdReaderViewType?
+    private var cameraType: CardIdReaderCameraType = .back
+    
+    private (set) var state: CardIdReaderState = .idle {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                guard let s = self else { return }
+                s.view?.update(state: s.state)
+            }
+        }
+    }
+    
+    func startSession() {
+        state = .session(cameraType: cameraType)
+    }
+    
+    func endSession() {
+        state = .idle
+    }
+    
     func takePhoto() {
-        
+        state = .photoCapturing
     }
     
     func flipCamera() {
-        
+        cameraType = cameraType.inverted
+        state = .session(cameraType: cameraType)
     }
     
     func cancel() {
-        
+        // TODO
     }
     
     func reportError(_ error: CardIdReaderError) {
-        print("error: \(error.localizedDescription)")
+        state = .failure(message: error.localizedDescription)
+    }
+    
+    func processPhoto(image: UIImage) {
+        // TODO 
     }
 }

@@ -11,15 +11,11 @@ import AVFoundation
 
 internal class CardIdReaderViewController: UIViewController {
     
-    private let viewModel: CardIdReaderViewModelType
+    private var viewModel: CardIdReaderViewModelType
     init(viewModel: CardIdReaderViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .cancel,
-            target: self,
-            action: #selector(dismissTap(_:))
-        )
+        self.viewModel.view = self
     }
     
     required init?(coder: NSCoder) {
@@ -36,8 +32,13 @@ internal class CardIdReaderViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = ColorStyle.dark
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .cancel,
+            target: self,
+            action: #selector(dismissTap(_:))
+        )
         title = viewModel.title
+        
         mainView.labelDescription.text = viewModel.description
         mainView.buttonFlipCamera.addTarget(self, action: #selector(buttonFlipCameraTap(_:)), for: .touchUpInside)
         mainView.buttonTakePhoto.addTarget(self, action: #selector(buttonTakePhotoTap(_:)), for: .touchUpInside)
@@ -46,11 +47,11 @@ internal class CardIdReaderViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        initiateSession()
+        viewModel.startSession()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        suspendSession()
+        viewModel.endSession()
         
         super.viewWillDisappear(animated)
     }
@@ -70,33 +71,42 @@ internal class CardIdReaderViewController: UIViewController {
     private let captureSession = AVCaptureSession()
     private let photoOutput = AVCapturePhotoOutput()
     
-    private func initiateSession() {
+    private func initiateSession(position: AVCaptureDevice.Position) {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
-            setupCaptureSession()
+            setupCaptureSession(position: position)
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] granted in
                 guard granted else {
                     self?.viewModel.reportError(.noCameraAccess)
                     return
                 }
-                self?.setupCaptureSession()
+                self?.viewModel.startSession()
             })
         default:
             viewModel.reportError(.noCameraAccess)
         }
     }
     
-    private func setupCaptureSession() {
+    private let videoDeviceDiscoverySession = AVCaptureDevice.DiscoverySession(
+        deviceTypes: [.builtInWideAngleCamera, .builtInDualCamera, .builtInTrueDepthCamera],
+        mediaType: .video,
+        position: .unspecified
+    )
+    
+    private func setupCaptureSession(position: AVCaptureDevice.Position) {
         captureSession.beginConfiguration()
         
-        guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video) else {
+        let devices = videoDeviceDiscoverySession.devices
+        guard let device = devices.first(where: { $0.position == position }) ?? devices.first else {
             viewModel.reportError(.noCameraDevice)
             return
         }
         
         do {
-            let input = try AVCaptureDeviceInput(device: backCamera)
+            let input = try AVCaptureDeviceInput(device: device)
+            captureSession.inputs.forEach({ captureSession.removeInput($0) })
+            captureSession.outputs.forEach({ captureSession.removeOutput($0) })
             if captureSession.canAddInput(input) && captureSession.canAddOutput(photoOutput) {
                 captureSession.addInput(input)
                 captureSession.sessionPreset = .photo
@@ -122,6 +132,55 @@ internal class CardIdReaderViewController: UIViewController {
     }
     
     private func suspendSession() {
-        captureSession.stopRunning()
+        if captureSession.isRunning {
+            captureSession.stopRunning()
+        }
+    }
+}
+
+extension CardIdReaderViewController: CardIdReaderViewType {
+    func update(state: CardIdReaderState) {
+        switch state {
+        case .session(cameraType: let cameraType):
+            mainView.buttonTakePhoto.isEnabled = true
+            mainView.labelError.isHidden = true
+            mainView.cameraView.isHidden = false
+            
+            let position: AVCaptureDevice.Position
+            switch cameraType {
+            case .back:
+                position = .back
+            case .front:
+                position = .front
+            }
+            initiateSession(position: position)
+        case .failure(message: let message):
+            mainView.buttonTakePhoto.isEnabled = false
+            mainView.labelError.isHidden = false
+            mainView.labelError.text = message
+            mainView.cameraView.isHidden = true
+        case .idle:
+            mainView.buttonTakePhoto.isEnabled = false
+            mainView.labelError.isHidden = true
+            mainView.cameraView.isHidden = true
+            suspendSession()
+        case .photoCapturing:
+            mainView.buttonTakePhoto.isEnabled = false
+            let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+            photoOutput.capturePhoto(with: settings, delegate: self)
+        }
+    }
+}
+
+extension CardIdReaderViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            if let e = error {
+                self?.viewModel.reportError(.system(message: e.localizedDescription))
+                return
+            }
+            guard let imageData = photo.fileDataRepresentation(), let image = UIImage(data: imageData) else { return }
+            self?.viewModel.processPhoto(image: image)
+        }
     }
 }

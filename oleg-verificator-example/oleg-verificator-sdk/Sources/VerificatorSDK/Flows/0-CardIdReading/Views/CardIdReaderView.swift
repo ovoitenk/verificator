@@ -29,8 +29,16 @@ class CardIdReaderView: UIView {
     let labelDescription: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Testing test"
         label.textColor = ColorStyle.white
+        return label
+    }()
+    
+    let labelError: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = ColorStyle.white
+        label.textAlignment = .center
         return label
     }()
     
@@ -96,6 +104,14 @@ class CardIdReaderView: UIView {
             Constraint(.top).to(safeAreaLayoutGuide),
             Constraint(.trailing),
             Constraint(.bottom).to(bottomStack, attribute: .top).constant(16)
+        ])
+        
+        addSubview(labelError)
+        labelError.layout([
+            Constraint(.leading).to(cameraView).constant(16),
+            Constraint(.trailing).to(cameraView).constant(16),
+            Constraint(.top).to(cameraView).constant(16),
+            Constraint(.bottom).to(cameraView).constant(16)
         ])
     }
 }
