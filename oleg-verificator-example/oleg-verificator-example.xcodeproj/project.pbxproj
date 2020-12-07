@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2117CE4E257B9318009B5A43 /* oleg-verificator-sdk in Frameworks */ = {isa = PBXBuildFile; productRef = 2117CE4D257B9318009B5A43 /* oleg-verificator-sdk */; };
+		213C4AD1257BD334001C2D82 /* VerificatorSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 213C4AD0257BD334001C2D82 /* VerificatorSDK */; };
+		213C4AEF257D469C001C2D82 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4AEE257D469C001C2D82 /* MenuViewModel.swift */; };
+		213C4AF8257D4DDA001C2D82 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4AF7257D4DDA001C2D82 /* UIColor+Extensions.swift */; };
+		213C4B03257D4FF2001C2D82 /* TextsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4B02257D4FF2001C2D82 /* TextsViewController.swift */; };
+		213C4B08257D506D001C2D82 /* TextsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4B07257D506D001C2D82 /* TextsViewModel.swift */; };
+		213C4B13257D8D2F001C2D82 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4B12257D8D2F001C2D82 /* MessageViewController.swift */; };
+		213C4B1B257D8D41001C2D82 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C4B1A257D8D41001C2D82 /* MessageViewModel.swift */; };
 		214ACB1D257B8D090065B7AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB1C257B8D090065B7AF /* AppDelegate.swift */; };
 		214ACB1F257B8D090065B7AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB1E257B8D090065B7AF /* SceneDelegate.swift */; };
-		214ACB21257B8D090065B7AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB20257B8D090065B7AF /* ViewController.swift */; };
+		214ACB21257B8D090065B7AF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ACB20257B8D090065B7AF /* MenuViewController.swift */; };
 		214ACB24257B8D090065B7AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214ACB22257B8D090065B7AF /* Main.storyboard */; };
 		214ACB26257B8D090065B7AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214ACB25257B8D090065B7AF /* Assets.xcassets */; };
 		214ACB29257B8D090065B7AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214ACB27257B8D090065B7AF /* LaunchScreen.storyboard */; };
@@ -36,11 +42,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2117CE5E257B95E3009B5A43 /* oleg-verificator-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "oleg-verificator-sdk"; path = "../oleg-verificator-sdk"; sourceTree = "<group>"; };
+		213C4AEE257D469C001C2D82 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		213C4AF7257D4DDA001C2D82 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		213C4B02257D4FF2001C2D82 /* TextsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsViewController.swift; sourceTree = "<group>"; };
+		213C4B07257D506D001C2D82 /* TextsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsViewModel.swift; sourceTree = "<group>"; };
+		213C4B12257D8D2F001C2D82 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		213C4B1A257D8D41001C2D82 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		213C4B1F257DAF93001C2D82 /* oleg-verificator-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "oleg-verificator-sdk"; path = "../oleg-verificator-sdk"; sourceTree = "<group>"; };
 		214ACB19257B8D090065B7AF /* oleg-verificator-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oleg-verificator-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		214ACB1C257B8D090065B7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		214ACB1E257B8D090065B7AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		214ACB20257B8D090065B7AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		214ACB20257B8D090065B7AF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		214ACB23257B8D090065B7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		214ACB25257B8D090065B7AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		214ACB28257B8D090065B7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2117CE4E257B9318009B5A43 /* oleg-verificator-sdk in Frameworks */,
+				213C4AD1257BD334001C2D82 /* VerificatorSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,9 +94,74 @@
 		2117CE4C257B9318009B5A43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2117CE5E257B95E3009B5A43 /* oleg-verificator-sdk */,
+				213C4B1F257DAF93001C2D82 /* oleg-verificator-sdk */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		213C4AE3257D454E001C2D82 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				214ACB22257B8D090065B7AF /* Main.storyboard */,
+				214ACB25257B8D090065B7AF /* Assets.xcassets */,
+				214ACB27257B8D090065B7AF /* LaunchScreen.storyboard */,
+				214ACB2A257B8D090065B7AF /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		213C4AE4257D455E001C2D82 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				214ACB1C257B8D090065B7AF /* AppDelegate.swift */,
+				214ACB1E257B8D090065B7AF /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		213C4AE5257D456C001C2D82 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				213C4AEC257D462D001C2D82 /* 0-Menu */,
+				213C4AED257D4638001C2D82 /* 1-Texts */,
+				213C4B11257D8D04001C2D82 /* 2-Message */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		213C4AEC257D462D001C2D82 /* 0-Menu */ = {
+			isa = PBXGroup;
+			children = (
+				214ACB20257B8D090065B7AF /* MenuViewController.swift */,
+				213C4AEE257D469C001C2D82 /* MenuViewModel.swift */,
+			);
+			name = "0-Menu";
+			sourceTree = "<group>";
+		};
+		213C4AED257D4638001C2D82 /* 1-Texts */ = {
+			isa = PBXGroup;
+			children = (
+				213C4B02257D4FF2001C2D82 /* TextsViewController.swift */,
+				213C4B07257D506D001C2D82 /* TextsViewModel.swift */,
+			);
+			name = "1-Texts";
+			sourceTree = "<group>";
+		};
+		213C4AF6257D4DCA001C2D82 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				213C4AF7257D4DDA001C2D82 /* UIColor+Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		213C4B11257D8D04001C2D82 /* 2-Message */ = {
+			isa = PBXGroup;
+			children = (
+				213C4B12257D8D2F001C2D82 /* MessageViewController.swift */,
+				213C4B1A257D8D41001C2D82 /* MessageViewModel.swift */,
+			);
+			name = "2-Message";
 			sourceTree = "<group>";
 		};
 		214ACB10257B8D090065B7AF = {
@@ -111,13 +188,10 @@
 		214ACB1B257B8D090065B7AF /* oleg-verificator-example */ = {
 			isa = PBXGroup;
 			children = (
-				214ACB1C257B8D090065B7AF /* AppDelegate.swift */,
-				214ACB1E257B8D090065B7AF /* SceneDelegate.swift */,
-				214ACB20257B8D090065B7AF /* ViewController.swift */,
-				214ACB22257B8D090065B7AF /* Main.storyboard */,
-				214ACB25257B8D090065B7AF /* Assets.xcassets */,
-				214ACB27257B8D090065B7AF /* LaunchScreen.storyboard */,
-				214ACB2A257B8D090065B7AF /* Info.plist */,
+				213C4AF6257D4DCA001C2D82 /* Utils */,
+				213C4AE5257D456C001C2D82 /* Flows */,
+				213C4AE4257D455E001C2D82 /* Application */,
+				213C4AE3257D454E001C2D82 /* Resources */,
 			);
 			path = "oleg-verificator-example";
 			sourceTree = "<group>";
@@ -157,7 +231,7 @@
 			);
 			name = "oleg-verificator-example";
 			packageProductDependencies = (
-				2117CE4D257B9318009B5A43 /* oleg-verificator-sdk */,
+				213C4AD0257BD334001C2D82 /* VerificatorSDK */,
 			);
 			productName = "oleg-verificator-example";
 			productReference = 214ACB19257B8D090065B7AF /* oleg-verificator-example.app */;
@@ -273,9 +347,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				214ACB21257B8D090065B7AF /* ViewController.swift in Sources */,
+				214ACB21257B8D090065B7AF /* MenuViewController.swift in Sources */,
+				213C4B1B257D8D41001C2D82 /* MessageViewModel.swift in Sources */,
+				213C4AF8257D4DDA001C2D82 /* UIColor+Extensions.swift in Sources */,
+				213C4B13257D8D2F001C2D82 /* MessageViewController.swift in Sources */,
 				214ACB1D257B8D090065B7AF /* AppDelegate.swift in Sources */,
+				213C4B08257D506D001C2D82 /* TextsViewModel.swift in Sources */,
+				213C4B03257D4FF2001C2D82 /* TextsViewController.swift in Sources */,
 				214ACB1F257B8D090065B7AF /* SceneDelegate.swift in Sources */,
+				213C4AEF257D469C001C2D82 /* MenuViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,9 +531,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M75J8SFFJ4;
-				INFOPLIST_FILE = "oleg-verificator-example/Info.plist";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 4KTE83XQQ9;
+				INFOPLIST_FILE = "oleg-verificator-example/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -461,6 +542,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.voitenko.oleg-verificator-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Oleg Developer Wildcard";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -471,9 +553,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M75J8SFFJ4;
-				INFOPLIST_FILE = "oleg-verificator-example/Info.plist";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 4KTE83XQQ9;
+				INFOPLIST_FILE = "oleg-verificator-example/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -481,6 +564,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.voitenko.oleg-verificator-example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Oleg Developer Wildcard";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -612,9 +696,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2117CE4D257B9318009B5A43 /* oleg-verificator-sdk */ = {
+		213C4AD0257BD334001C2D82 /* VerificatorSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "oleg-verificator-sdk";
+			productName = VerificatorSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
