@@ -89,7 +89,7 @@ public struct VerificatorConfiguration {
     // non overridable configuration property
     let minConfidence: Float = 0.6
     
-    init(tintColor: UIColor, errorHandlingMode: VeritificatorErrorHandlingMode) {
+    public init(tintColor: UIColor, errorHandlingMode: VeritificatorErrorHandlingMode) {
         self.tintColor = tintColor
         self.errorHandlingMode = errorHandlingMode
     }
