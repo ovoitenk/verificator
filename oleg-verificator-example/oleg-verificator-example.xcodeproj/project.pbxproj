@@ -42,13 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		213C4AB0257BA05D001C2D82 /* oleg-verificator-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "oleg-verificator-sdk"; sourceTree = "<group>"; };
 		213C4AEE257D469C001C2D82 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		213C4AF7257D4DDA001C2D82 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		213C4B02257D4FF2001C2D82 /* TextsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsViewController.swift; sourceTree = "<group>"; };
 		213C4B07257D506D001C2D82 /* TextsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsViewModel.swift; sourceTree = "<group>"; };
 		213C4B12257D8D2F001C2D82 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		213C4B1A257D8D41001C2D82 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		213C4B1F257DAF93001C2D82 /* oleg-verificator-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "oleg-verificator-sdk"; path = "../oleg-verificator-sdk"; sourceTree = "<group>"; };
 		214ACB19257B8D090065B7AF /* oleg-verificator-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oleg-verificator-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		214ACB1C257B8D090065B7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		214ACB1E257B8D090065B7AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		2117CE4C257B9318009B5A43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				213C4AB0257BA05D001C2D82 /* oleg-verificator-sdk */,
+				213C4B1F257DAF93001C2D82 /* oleg-verificator-sdk */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
